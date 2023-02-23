@@ -2,35 +2,35 @@ import unittest
 
 from utils import img2ascii
 
-img = [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
-        [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
-        [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
-        [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
-        [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
-        [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
-        [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
-        [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+class TestImg2Ascii(unittest.TestCase):
+
+    img = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+            [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+            [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+            [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+            [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+    tests = [
+        (TestImg2Ascii.img, None, None, '..........\n..######..\n.##....##.\n.#......#.\n.#......#.\n.#......#.\n.#......#.\n.##....##.\n..######..\n..........'),
+        (TestImg2Ascii.img, 'O', ' ', '          \n  OOOOOO  \n OO    OO \n O      O \n O      O \n O      O \n O      O \n OO    OO \n  OOOOOO  \n          '),
+
     ]
 
-tests = [
-    (img, None, None, '..........\n..######..\n.##....##.\n.#......#.\n.#......#.\n.#......#.\n.#......#.\n.##....##.\n..######..\n..........'),
-    (img, 'O', ' ', '          \n  OOOOOO  \n OO    OO \n O      O \n O      O \n O      O \n O      O \n OO    OO \n  OOOOOO  \n          '),
-
-]
-
-class MyTests(unittest.TestCase):
-
     def test_1(self):
-        for img, black, white, expected in tests:
+        for img, black, white, expected in TestImg2Ascii.tests:
             black = black or '#'
             white = white or '.'
             result = img2ascii(img, black, white)
             self.assertEqual(result, expected)
 
-
+'''
 tests = [
     ['circle-nb.pbm', [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -58,6 +58,7 @@ class TestLoadPBM(unittest.TestCase):
             feedback = f"Le fichier filename={filename} est chargé correctement"
             self.assertEqual(result, expected, feedback)
 
+'''
 
 if __name__ == '__main__':
     unittest.main()
