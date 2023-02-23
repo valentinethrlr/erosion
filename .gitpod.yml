@@ -23,3 +23,4 @@ vscode:
     - littlefoxteam.vscode-python-test-adapter
     - ms-azuretools.vscode-docker
     - laike9m.cyberbrain
+    - ms-vscode.sublime-keybindings
